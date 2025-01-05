@@ -13,7 +13,6 @@ This project is an Express.js app backed by a SQLite database accessed through t
 
 ## Running
 
- - Start the app: `yarn start`
+- Start the app: `yarn start`
 
 By default the server starts on port 5000.
-

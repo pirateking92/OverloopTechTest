@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
-import { ROUTE_HOME, ROUTE_ARTICLE_LIST } from '../../constants';
+import { ROUTE_HOME, ROUTE_ARTICLE_LIST, ROUTE_AUTHOR_LIST } from '../../constants';
 
 function MainNav() {
     return (
@@ -12,6 +12,9 @@ function MainNav() {
                 <Navbar.Brand as={ Link } to={ ROUTE_HOME }>Overloop Tech Test</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link as= { Link } to={ ROUTE_ARTICLE_LIST }>Articles</Nav.Link>
+                </Nav>
+                <Nav className="mr-auto">
+                    <Nav.Link as= { Link } to={ ROUTE_AUTHOR_LIST }>Author</Nav.Link>
                 </Nav>
             </Navbar>
         </div>
