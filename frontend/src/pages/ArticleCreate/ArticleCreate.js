@@ -6,12 +6,14 @@ import Button from 'react-bootstrap/Button';
 import { ROUTE_ARTICLE_LIST } from '../../constants';
 import { createArticle } from '../../services/articles';
 import RegionDropdown from '../../components/RegionDropdown/RegionDropdown';
+import AuthorDropdown from '../../components/AuthorDropdown/AuthorDropdown';
 
 function ArticleCreate() {
     const history = useHistory();
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [regions, setRegions] = useState([]);
+    const [authors, setAuthors] = useState([]);
 
     const handleSave = async () => {
         const payload = { title, content, regions };

@@ -23,6 +23,7 @@
         "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
         "@babel/plugin-proposal-optional-chaining": "^7.21.0",
         "@babel/preset-env": "^7.26.0",
+        "jest": "^29.7.0",
         "nodemon": "^3.1.9"
     }
 }

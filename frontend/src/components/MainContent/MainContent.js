@@ -9,13 +9,14 @@ import {
     ROUTE_ARTICLE_EDIT,
     ROUTE_AUTHOR_LIST,
     ROUTE_AUTHOR_CREATE,
-    // ROUTE_AUTHOR_EDIT
+    ROUTE_AUTHOR_EDIT
 } from '../../constants';
 import ArticleList from '../../pages/ArticleList/ArticleList';
 import ArticleCreate from '../../pages/ArticleCreate/ArticleCreate';
 import ArticleEdit from '../../pages/ArticleEdit/ArticleEdit';
 import AuthorList from '../../pages/AuthorList/AuthorList';
 import AuthorCreate from '../../pages/AuthorCreate/AuthorCreate';
+import AuthorEdit from '../../pages/AuthorEdit/AuthorEdit';
 
 function MainContent() {
     return (
@@ -27,6 +28,9 @@ function MainContent() {
                     </Route>
                     <Route path={ ROUTE_AUTHOR_CREATE }>
                         <AuthorCreate />
+                    </Route>
+                    <Route path={ ROUTE_AUTHOR_EDIT }>
+                        <AuthorEdit />
                     </Route>
                     <Route path={ ROUTE_ARTICLE_LIST }>
                         <ArticleList />
