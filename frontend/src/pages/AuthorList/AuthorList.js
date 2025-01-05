@@ -3,27 +3,27 @@ import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 
 import { ROUTE_AUTHOR_PREFIX, ROUTE_AUTHOR_CREATE } from '../../constants';
-import { listAuthors } from '../../services/Authors';
+import { listAuthors } from '../../services/authors';
 
 function AuthorList() {
-    const [Authors, setAuthors] = useState([]);
+    const [author, setAuthor] = useState([]);
 
     useEffect(() => {
-        const fetchAuthors = async () => {
+        const fetchAuthor = async () => {
             const data = await listAuthors();
-            setAuthors(data);
+            setAuthor(data);
         };
 
-        fetchAuthors();
+        fetchAuthor();
     }, []);
 
-    const renderAuthors = () => Authors.map((Author) => {
-        const { id, title } = Author;
+    const renderAuthor = () => author.map((author) => {
+        const { id, firstName, lastName } = author;
 
         return (
             <tr key={ id }>
                 <td>
-                    <Link to={ `${ROUTE_AUTHOR_PREFIX}/${id}` }>{ title }</Link>
+                    <Link to={ `${ROUTE_AUTHOR_PREFIX}/${id}` }>{ ` ${firstName} ${lastName} ` }</Link>
                 </td>
             </tr>
         );
@@ -31,18 +31,18 @@ function AuthorList() {
 
     return (
         <div className="AuthorList">
-            <h1>Authors</h1>
+            <h1>Author</h1>
             <Link className="d-block mb-3" to={ ROUTE_AUTHOR_CREATE }>
                 Create a new Author
             </Link>
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Title</th>
+                        <th>Author Name</th>
                     </tr>
                 </thead>
                 <tbody>
-                    { renderAuthors() }
+                    { renderAuthor() }
                 </tbody>
             </Table>
         </div>
