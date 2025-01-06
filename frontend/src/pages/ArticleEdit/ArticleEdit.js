@@ -14,7 +14,7 @@ function ArticleEdit() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [regions, setRegions] = useState([]);
-    const [author, setAuthor] = useState([]); // Ensure this is initialized as null
+    const [authorId, setAuthorId] = useState(null);
 
     useEffect(() => {
         const fetchArticle = async () => {
@@ -22,7 +22,7 @@ function ArticleEdit() {
             setTitle(data.title);
             setContent(data.content);
             setRegions(data.regions);
-            setAuthor(data.author);
+            setAuthorId(data.author);
             console.log("REGIONS: ", data.regions)
             console.log("AUTHOR: ", data.author)
         };
@@ -31,12 +31,11 @@ function ArticleEdit() {
     }, [articleId]);
 
     const handleSave = async () => {
-        // Only send the authorId when saving
         const payload = { 
             title, 
             content, 
             regions, 
-            author
+            authorId
         };
         await editArticle(articleId, payload);
         history.push(ROUTE_ARTICLE_LIST);
@@ -75,8 +74,8 @@ function ArticleEdit() {
                 <Form.Group>
                     <Form.Label>Author</Form.Label>
                     <AuthorDropdown
-                        value={ author }  // This will hold the full author object
-                        onChange={ (author) => setAuthor(author) }
+                        value={ authorId } 
+                        onChange={setAuthorId}
                         
                     />
                     
