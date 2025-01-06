@@ -8,14 +8,13 @@ import { getArticle, editArticle } from '../../services/articles';
 import RegionDropdown from '../../components/RegionDropdown/RegionDropdown';
 import AuthorDropdown from '../../components/AuthorDropdown/AuthorDropdown';
 
-
 function ArticleEdit() {
     const history = useHistory();
     const { articleId } = useParams();
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [regions, setRegions] = useState([]);
-    const [authors, setAuthors] = useState([]);
+    const [author, setAuthor] = useState([]); // Ensure this is initialized as null
 
     useEffect(() => {
         const fetchArticle = async () => {
@@ -23,14 +22,22 @@ function ArticleEdit() {
             setTitle(data.title);
             setContent(data.content);
             setRegions(data.regions);
-            setAuthors(data.authors)
+            setAuthor(data.author);
+            console.log("REGIONS: ", data.regions)
+            console.log("AUTHOR: ", data.author)
         };
 
         fetchArticle();
     }, [articleId]);
 
     const handleSave = async () => {
-        const payload = { title, content, regions, authors };
+        // Only send the authorId when saving
+        const payload = { 
+            title, 
+            content, 
+            regions, 
+            author
+        };
         await editArticle(articleId, payload);
         history.push(ROUTE_ARTICLE_LIST);
     };
@@ -68,9 +75,11 @@ function ArticleEdit() {
                 <Form.Group>
                     <Form.Label>Author</Form.Label>
                     <AuthorDropdown
-                        value={ authors }
-                        onChange={ (authors) => setAuthors(authors) }
+                        value={ author }  // This will hold the full author object
+                        onChange={ (author) => setAuthor(author) }
+                        
                     />
+                    
                 </Form.Group>
                 <Button variant="primary" onClick={ handleSave }>
                     Save Article

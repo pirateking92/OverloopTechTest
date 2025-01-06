@@ -13,12 +13,20 @@ function ArticleCreate() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [regions, setRegions] = useState([]);
-    const [authors, setAuthors] = useState([]);
+    const [authors, setAuthor] = useState([]); 
 
     const handleSave = async () => {
-        const payload = { title, content, regions };
+
+        const payload = { 
+            title, 
+            content, 
+            regions, 
+            authors
+        };
         await createArticle(payload);
         history.push(ROUTE_ARTICLE_LIST);
+        console.log("REGIONS HERE: ", regions)
+        console.log("AUTHOR HERE: ", authors)
     };
 
     return (
@@ -49,6 +57,13 @@ function ArticleCreate() {
                     <RegionDropdown
                         value={ regions }
                         onChange={ (regions) => setRegions(regions) }
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Author</Form.Label>
+                    <AuthorDropdown
+                        value={ authors }
+                        onChange={ (authors) => setAuthor(authors) } // Ensure this sets the full author object
                     />
                 </Form.Group>
                 <Button variant="primary" onClick={ handleSave }>
