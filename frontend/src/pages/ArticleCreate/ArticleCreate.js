@@ -34,8 +34,9 @@ function ArticleCreate() {
             <h1>Create Article</h1>
             <Form>
                 <Form.Group>
-                    <Form.Label>Title</Form.Label>
+                    <Form.Label htmlFor="title-input">Title</Form.Label>
                     <Form.Control
+                        id="title-input"
                         type="text"
                         placeholder="Title"
                         value={ title }
@@ -43,8 +44,9 @@ function ArticleCreate() {
                     />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label>Content</Form.Label>
+                    <Form.Label htmlFor="content-input">Content</Form.Label>
                     <Form.Control
+                        id="content-input"
                         as="textarea"
                         placeholder="Content"
                         rows="5"

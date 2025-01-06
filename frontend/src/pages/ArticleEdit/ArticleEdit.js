@@ -22,7 +22,7 @@ function ArticleEdit() {
             setTitle(data.title);
             setContent(data.content);
             setRegions(data.regions);
-            setAuthorId(data.author);
+            setAuthorId(data.author?.id || null);
             console.log("REGIONS: ", data.regions)
             console.log("AUTHOR: ", data.author)
         };
@@ -76,7 +76,7 @@ function ArticleEdit() {
                     <AuthorDropdown
                         value={ authorId } 
                         onChange={setAuthorId}
-                        
+                        placeholder="Select an author"
                     />
                     
                 </Form.Group>
